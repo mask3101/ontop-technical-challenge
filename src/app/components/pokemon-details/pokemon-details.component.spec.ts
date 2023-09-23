@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PokemonDetailsComponent } from './pokemon-details.component';
 import { Router } from '@angular/router';
@@ -27,7 +27,6 @@ describe('PokemonDetailsComponent', () => {
   beforeEach(async () => {
     loadservice = {
       updateLoadingStatus: (status:boolean) => {
-        
       }
     }
     pokeService = {
@@ -36,8 +35,43 @@ describe('PokemonDetailsComponent', () => {
         sprites: {
             front_default: 'http://frontimage.png',
         },
-        types: [{name:'plant'}]})
-      
+        types: [{name:'plant'}]}
+      ),
+      getPokemonDetails: () => of(
+        {flavor_text_entries: [{
+          flavor_text: 'description',
+          language: {
+            name: 'en'
+          },
+          version: {name: 'red'}
+        }],
+        evolution_chain: {url: 'http'}},
+      ),
+      getEvolutionChain: () => of(
+        {chain: {
+          "evolves_to": [
+              {
+                  "evolves_to": [
+                      { "species": {
+                              "name": "venusaur",
+                              "url": "https://pokeapi.co/api/v2/pokemon-species/3/"
+                          }
+                      }
+                  ],
+                  
+                  "species": {
+                      "name": "ivysaur",
+                      "url": "https://pokeapi.co/api/v2/pokemon-species/2/"
+                  }
+              }
+          ],
+          "species": {
+              "name": "bulbasaur",
+              "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+          }
+      }}
+      )
+
     }
     await TestBed.configureTestingModule({
       declarations: [ PokemonDetailsComponent ],
@@ -54,7 +88,7 @@ describe('PokemonDetailsComponent', () => {
   });
 
   it('should create', () => {
-    
+
     expect(component).toBeTruthy();
   });
 
@@ -75,5 +109,10 @@ describe('PokemonDetailsComponent', () => {
       router.navigate(['pokemon', '1']).then(() => {
         expect(location.path()).toBe('/pokemon/1')
       })
+  })
+
+  it('pokemon details func', () => {
+    component.pokemonDetails()
+    //tick(1500)
   })
 });

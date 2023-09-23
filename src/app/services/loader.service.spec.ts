@@ -28,7 +28,6 @@ describe('LoaderService', () => {
     service.updateLoadingStatus(true)
     service.isLoading$.subscribe(value => {
       loadStatus = value
-      console.log('value', value)
     })
     expect(loadStatus).toBe(true)
   })

@@ -47,4 +47,10 @@ describe('PokeapiService', () => {
       expect(val).toBeTruthy()
     })
   })
+
+  it('getPokemonDetails function', () => {
+    service.getPokemonDetails('1').subscribe( val => {
+      expect(val).toBeTruthy()
+    })
+  })
 });
