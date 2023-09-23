@@ -1,0 +1,18 @@
+@import '../../assets/variables/variables';
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 85%;
+    .not-found-text {
+        font-size: xx-large;
+        font-weight: $bold;
+        text-align: center;
+    }
+    
+    .pokeball {
+        max-width: 600px;
+        width: inherit;
+    }
+}

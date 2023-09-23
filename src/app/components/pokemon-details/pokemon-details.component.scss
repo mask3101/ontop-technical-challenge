@@ -1,0 +1,126 @@
+@import '../../assets/variables/variables';
+
+.details-container, .details-container-evo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 15px;
+}
+
+.back-button {
+    width: 50px;
+    position: absolute;
+    top: 80px;
+    left: 10px;
+}
+
+.type-container {
+    display: flex;
+    gap: $padding;
+    justify-content: center;
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .type-pokemon {
+        border: 1px solid black;
+        border-radius: $border-radius;
+        padding: $padding;
+        &.bug {
+            background-color: $type-bug;
+        }
+        &.dark {
+            background-color: $type-dark;
+        }
+        &.dragon {
+            background-color: $type-dragon;
+        }
+        &.electric {
+            background-color: $type-electric;
+        }
+        &.fairy {
+            background-color: $type-fairy;
+        }
+        &.fighting {
+            background-color: $type-fighting;
+        }
+        &.fire {
+            background-color: $type-fire;
+        }
+        &.flying {
+            background-color: $type-flying;
+        }
+        &.ghost {
+            background-color: $type-ghost;
+        }
+        &.grass {
+            background-color: $type-grass;
+        }
+        &.ground {
+            background-color: $type-ground;
+        }
+        &.ice {
+            background-color: $type-ice;
+        }
+        &.normal {
+            background-color: $type-normal;
+        }
+        &.poison {
+            background-color: $type-poison;
+        }
+        &.psychic {
+            background-color: $type-psychic;
+        }
+        &.rock {
+            background-color: $type-rock;
+        }
+        &.steel {
+            background-color: $type-steel;
+        }
+        &.water {
+            background-color: $type-water;
+        }
+    }
+}
+
+.pokemon-name, .description-header {
+    font-weight: $bold;
+}
+
+.description-header, .details-container-evo {
+    cursor: pointer;
+}
+
+.description-container,.description-container-text {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.description-container-text {
+    width: 100%;
+    margin: $margin;
+    border: 1px solid black;
+}
+
+.version {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+.evolution-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: $margin;
+    .evolution-phase {
+        display: flex;
+        gap: $padding;
+    }
+}

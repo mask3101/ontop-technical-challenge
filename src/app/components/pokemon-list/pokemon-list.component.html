@@ -1,0 +1,19 @@
+<div class="list-container">
+    <div *ngFor="let poke of pokelist; let idx = index" class="card | async" (click)="showPokemon(idx + offset)">
+        <app-pokemon-card [pokemon]="poke.url" ></app-pokemon-card>
+    </div>
+</div>
+<div class="pages-options">
+    <div class="pagination-container">
+        Pagination
+        <button (click)="firstPage()">First</button>
+        <button *ngFor="let page of pagination" (click)="goToPage(page)">{{page}}</button>
+        <button (click)="lastPage()">Last</button>
+    </div>
+    <div class="page-dropdown">
+        <label for="pkmn-page">Page: </label>
+        <select id="pkmn-page" name="pkmn-pages" #pages [(ngModel)]="selectedPage" (change)="onChange(pages.value)">
+            <option *ngFor="let page of maxOffset | numberGenerator" [value]="page" [selected]="page === 1">{{page}}</option>
+        </select>
+    </div>
+</div>

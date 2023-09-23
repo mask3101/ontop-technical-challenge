@@ -1,0 +1,38 @@
+<div class="details-container" *ngIf="pokemonData !== undefined">
+    <img src="/assets/arrow.png" (click)="returnToList()" class="back-button" />
+    <img *ngIf="pokemonData" [src]="pokemonData.sprites.front_default" [alt]="pokemonData.name"/>
+    <div class="pokemon-name">{{pokemonData.name | uppercase}}</div>
+    <div class="type-container">
+        <div *ngFor="let type of pokemonData?.types" class="type-pokemon" [ngClass]="type?.type?.name">{{type?.type?.name | uppercase }}</div>
+    </div>
+    <div class="description-container">
+        <div (click)="showDescriptions()" class="description-header">
+            Pokémon Description:
+        </div>
+        <div *ngIf="isShowDescription">
+            <div *ngFor="let description of descriptions" class="description-container-text">
+                <div class="version">Version: {{description.version.name}}</div>
+                <div [innerHtml]="description.flavor_text"></div>
+            </div>
+        </div>
+    </div>
+    <div class="evolution-container" *ngIf="pokemonFirstPhase.length !== 0">
+        <h3>Pokemon Evolutionary Chain</h3>
+        <div *ngFor="let pokemon of pokemonFirstPhase" class="details-container-evo pokemon-name" (click)="goToPokemonDetail(pokemon.id)">
+            <img [src]="pokemon.imgURL" [alt]="pokemon.name" />
+            {{pokemon.name | uppercase}}
+        </div>
+        <div *ngIf="pokemonSecondPhase" class="evolution-phase">
+            <div *ngFor="let pokemon of pokemonSecondPhase" class="details-container-evo pokemon-name" (click)="goToPokemonDetail(pokemon.id)">
+                <img [src]="pokemon.imgURL" [alt]="pokemon.name" />
+                {{pokemon.name | uppercase}}
+            </div>
+        </div>
+        <div *ngIf="pokemonThirdPhase" class="evolution-phase">
+            <div *ngFor="let pokemon of pokemonThirdPhase" class="details-container-evo pokemon-name" (click)="goToPokemonDetail(pokemon.id)">
+                <img [src]="pokemon.imgURL" [alt]="pokemon.name" />
+                {{pokemon.name | uppercase}}
+            </div>
+        </div>
+    </div>
+</div>
